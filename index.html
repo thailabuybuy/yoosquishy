@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUYOO — Brand Website Workbench</title>
+<style>
+:root{--purple:#8e3c91;--deep:#54245e;--pink:#efb9d8;--mint:#7bc9c0;--yellow:#f6cf4b;--coral:#ee5b70;--ink:#34223a;--cream:#fff9fc}
+*{box-sizing:border-box}body{margin:0;background:#f4eef5;color:var(--ink);font-family:Inter,Arial,sans-serif}
+button,a{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+aside{background:#29152f;color:white;padding:26px 18px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{font-weight:1000;font-size:27px;letter-spacing:-2px;color:#f3c9ec;text-shadow:2px 3px #6c3178}.sub{font-size:11px;color:#d5b8d8;letter-spacing:2px;margin:5px 0 30px}
+.side-label{font-size:10px;color:#a88eac;letter-spacing:2px;margin:25px 10px 8px}
+.nav{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;color:#e9dce9;text-align:left;padding:12px 11px;border-radius:12px;margin:3px 0;font-size:13px}
+.nav:hover,.nav.active{background:#59325f;color:#fff}.nav b{width:20px;color:#f4c6e7}
+.side-note{font-size:11px;color:#b99cbe;line-height:1.6;margin:35px 10px}
+main{min-width:0}.topbar{height:62px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid #eee2ef;position:sticky;top:0;z-index:5}
+.topbar small{color:#8c7b90}.top-actions{display:flex;gap:8px}.pill{border:1px solid #e5d5e8;background:#fff;border-radius:99px;padding:8px 13px;font-size:11px;color:#65446a}
+.preview{max-width:1440px;margin:auto;background:#fff;min-height:calc(100vh - 62px);box-shadow:0 8px 35px #4d2d5510}
+.site-head{display:flex;align-items:center;justify-content:space-between;padding:18px 5%;border-bottom:1px solid #f1e9f2;gap:20px}
+.logo{font-size:30px;font-weight:1000;letter-spacing:-2px;color:var(--purple);text-shadow:1px 2px #e9bde4}.logo small{display:block;font-size:9px;letter-spacing:1px;color:#79557c;text-shadow:none;text-align:center}
+.site-nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}.site-nav a{font-size:12px;text-decoration:none;color:#4a3a4d;font-weight:700;cursor:pointer}.site-nav a:hover{color:var(--purple)}
+.announcement{background:var(--purple);color:#fff;text-align:center;padding:9px;font-size:11px;letter-spacing:.5px}
+.page{display:none}.page.active{display:block}
+.hero{margin:22px 3%;min-height:480px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(110deg,#74347d 0%,#a44b9d 47%,#e6a9d4 100%);color:white;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.hero-copy{padding:7% 8%;position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#ffe7a1;font-weight:800}
+h1{font-size:clamp(40px,5.4vw,76px);line-height:.98;letter-spacing:-3px;margin:18px 0}.hero p{font-size:15px;line-height:1.8;max-width:440px;color:#fff0fc}
+.cta{display:inline-block;background:#f5d052;color:#4b2854;padding:14px 22px;border:0;border-radius:30px;text-decoration:none;font-weight:900;font-size:12px;margin:12px 8px 0 0}
+.cta.light{background:#fff;color:var(--purple)}.hero-art{height:100%;min-height:440px;background-size:cover;background-position:center;mix-blend-mode:normal;position:relative}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#a44b9d00,#a44b9d22)}
+.section{padding:52px 5%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.kicker{font-size:10px;letter-spacing:3px;color:var(--purple);font-weight:900}.section h2{font-size:34px;letter-spacing:-1.5px;margin:7px 0}.muted{color:#8b7b8e;font-size:13px;line-height:1.7}.text-link{font-size:12px;color:var(--purple);font-weight:800;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.product{border-radius:16px;overflow:hidden;background:#fff;border:1px solid #f0e5f0}.product-img{height:230px;background:#f8e9f5;display:flex;align-items:center;justify-content:center;overflow:hidden}.product-img img{width:100%;height:100%;object-fit:cover}.product-info{padding:14px}.product-info b{font-size:13px}.product-info small{display:block;color:#9b879c;margin-top:6px;font-size:10px}.tag{display:inline-block;background:#f9e6f4;color:#8e3c91;border-radius:20px;padding:5px 9px;font-size:9px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.feature-img{width:100%;border-radius:20px;display:block}.soft{background:#f8edf7}.mint{background:#e7f7f3}.yellow{background:#fff7d9}.pink{background:#fff0f6}
+.char-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.char{background:#f7e8f4;border-radius:16px;overflow:hidden}.char img{width:100%;display:block}.char div{padding:12px;font-weight:800;font-size:12px}
+.banner{padding:55px 6%;border-radius:22px;background:linear-gradient(120deg,#f4c9e7,#fff2c4);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.story-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.story{border:1px solid #eee2ef;border-radius:16px;overflow:hidden}.story img{width:100%;height:175px;object-fit:cover}.story div{padding:15px}.story small{color:#9a7e9d;font-size:10px}.story b{display:block;margin:8px 0;font-size:14px}
+.footer{background:#2e1835;color:#f7eaf7;padding:45px 6%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:25px}.footer h4{font-size:12px}.footer p,.footer a{font-size:11px;color:#cbb6cf;line-height:1.9;text-decoration:none;display:block;cursor:pointer}
+.page-hero{padding:70px 7%;background:linear-gradient(120deg,#7d367f,#bd77b5);color:white}.page-hero h1{font-size:55px}.page-hero p{max-width:650px;line-height:1.8}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.filter{border:1px solid #e8d8e9;background:white;border-radius:25px;padding:9px 15px;font-size:11px}.filter.active{background:var(--purple);color:white}
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:35px;padding:50px 6%}.detail-photo{background:#f5e5f3;border-radius:20px;min-height:430px;display:grid;place-items:center}.detail-photo img{width:100%;height:100%;object-fit:cover}.detail-copy h2{font-size:38px}.detail-copy p{line-height:1.8;color:#766779}.qty{display:flex;gap:10px;align-items:center;margin:20px 0}.qty button{border:1px solid #ddd;background:#fff;border-radius:50%;width:30px;height:30px}
+.form{display:grid;gap:12px;max-width:560px}.form input,.form textarea,.form select{padding:13px;border:1px solid #e4d6e5;border-radius:10px;font:inherit}.form textarea{min-height:120px}
+.notice{background:#fff7d9;padding:13px 16px;border-radius:10px;color:#725d2b;font-size:11px;margin:15px 0}
+@media(max-width:900px){.shell{grid-template-columns:1fr}aside{position:relative;height:auto;padding:15px}.side-label,.side-note{display:none}.side-nav{display:flex;overflow:auto}.nav{white-space:nowrap;width:auto}.topbar{padding:0 15px}.site-head{align-items:flex-start;flex-direction:column}.site-nav{gap:12px}.hero{grid-template-columns:1fr}.hero-art{min-height:260px}.cards{grid-template-columns:repeat(2,1fr)}.split,.product-detail{grid-template-columns:1fr}.footer{grid-template-columns:1fr 1fr}.char-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cards{grid-template-columns:1fr 1fr;gap:9px}.product-img{height:160px}.section{padding:35px 5%}.section h2{font-size:27px}.footer{grid-template-columns:1fr}.hero{margin:10px}.hero-copy{padding:35px 25px}.hero-art{min-height:210px}}
+</style></head>
+<body>
+<div class="shell">
+<aside>
+<div class="brand">FUYOO</div><div class="sub">CAN'T STOP SQUEEZING</div>
+<div class="side-label">SITE PAGES · 页面预览</div><div class="side-nav">
+<button class="nav active" data-page="home"><b>01</b> 首页 Home</button>
+<button class="nav" data-page="shop"><b>02</b> 商品集合 Shop</button>
+<button class="nav" data-page="product"><b>03</b> 商品详情 Product</button>
+<button class="nav" data-page="ip"><b>04</b> IP世界 Squishy Island</button>
+<button class="nav" data-page="about"><b>05</b> 品牌故事 About</button>
+<button class="nav" data-page="news"><b>06</b> 新闻资讯 News</button>
+<button class="nav" data-page="retail"><b>07</b> 线下渠道 Retail</button>
+<button class="nav" data-page="contact"><b>08</b> 联系我们 Contact</button>
+</div>
+<div class="side-label">WORKBENCH</div>
+<button class="nav" onclick="window.print()"><b>↗</b> 打印 / 导出 PDF</button>
+<div class="side-note">交互式静态原型 · 可切换页面、筛选商品、调整数量。<br>图片取自 FUYOO 2026 品牌介绍 PDF。价格、库存、支付、表单均为演示数据。</div>
+</aside>
+<main>
+<div class="topbar"><div><b>FUYOO Website Workbench</b> <small>　fuyoo-squishy.com · Desktop / Mobile Preview</small></div><div class="top-actions"><span class="pill">EN / 中文结构</span><span class="pill">Prototype v1.0</span></div></div>
+<div class="preview">
+<div class="announcement">A LITTLE SQUISH, A LOT OF JOY　✦　Discover the world of Squishy Island</div>
+<header class="site-head"><div class="logo">FUYOO<small>CAN'T STOP SQUEEZING</small></div><nav class="site-nav">
+<a onclick="go('home')">HOME</a><a onclick="go('shop')">SHOP</a><a onclick="go('ip')">SQUISHY ISLAND</a><a onclick="go('about')">OUR STORY</a><a onclick="go('news')">NEWS</a><a onclick="go('retail')">STORES</a><a onclick="go('contact')">CONTACT</a>
+</nav><span style="font-size:12px">⌕　♡　♧</span></header>
+<section id="home" class="page active">
+<div class="hero"><div class="hero-copy"><div class="eyebrow">WELCOME TO FUYOO WORLD</div><h1>FIND YOUR<br>HAPPY SQUISH.</h1><p>Meet the little friends of Squishy Island. Soft, playful and full of personality — squeeze away the stress and bring a little joy into every day.</p><a class="cta" onclick="go('shop')">EXPLORE THE COLLECTION →</a><a class="cta light" onclick="go('ip')">MEET THE CHARACTERS</a></div><div class="hero-art" id="heroArt"></div></div>
+<div class="section"><div class="section-head"><div><div class="kicker">FRESH FROM THE ISLAND</div><h2>Meet the latest squishies</h2><div class="muted">New friends are waiting to be discovered.</div></div><a class="text-link" onclick="go('shop')">VIEW ALL PRODUCTS →</a></div><div class="cards" id="homeProducts"></div></div>
+<div class="section soft"><div class="split"><div><div class="kicker">A WORLD OF LITTLE FRIENDS</div><h2>Welcome to Squishy Island</h2><p class="muted">A little island in the South Pacific, home to a cast of soft and lovable residents. Each character has a personality of its own — some are made for cuddles, some for collecting, and all are ready to become your new favourite.</p><a class="cta" onclick="go('ip')">EXPLORE THE ISLAND</a></div><img class="feature-img" id="islandImg"></div></div>
+<div class="section"><div class="banner"><div><div class="kicker">FOR COLLECTORS & CURIOUS MINDS</div><h2>Which character are you?</h2><p class="muted">Meet the islanders and find the one that feels like you.</p></div><a class="cta" onclick="go('ip')">MEET THE CAST →</a></div></div>
+<div class="section"><div class="section-head"><div><div class="kicker">FROM FUYOO</div><h2>News & island stories</h2></div><a class="text-link" onclick="go('news')">READ ALL NEWS →</a></div><div class="story-list" id="homeNews"></div></div>
+</section>
+<section id="shop" class="page"><div class="page-hero"><div class="eyebrow">THE FUYOO COLLECTION</div><h1>SHOP ALL SQUISHIES</h1><p>Find your next pocket-sized companion. Explore character collections, surprise finds and giftable favourites.</p></div><div class="section"><div class="kicker">FIND YOUR FAVOURITE</div><h2>Explore the collection</h2><div class="filters"><button class="filter active" data-filter="all">All products</button><button class="filter" data-filter="keychain">Keychain series</button><button class="filter" data-filter="main">Main series</button><button class="filter" data-filter="value">Value series</button><button class="filter" data-filter="gift">Gift & accessories</button></div><div class="cards" id="shopProducts"></div></div></section>
+<section id="product" class="page"><div class="product-detail"><div class="detail-photo"><img id="detailImg"></div><div class="detail-copy"><div class="kicker">SQUISHY ISLAND · CHARACTER SERIES</div><h2 id="detailName">Island Friend Squishy</h2><div class="tag">AGE 3+</div><p>A soft, squeezable character from the Squishy Island world. Collect your favourite islanders and take a little moment of joy wherever you go.</p><h3>Product highlights</h3><p>✦ TPR material · Soft and bouncy feel<br>✦ Original character design<br>✦ Collectible character assortment<br>✦ Gift-ready individual packaging</p><div class="qty"><button onclick="changeQty(-1)">−</button><b id="qty">1</b><button onclick="changeQty(1)">+</button></div><button class="cta" onclick="alert('Prototype only — connect Shopify checkout to enable purchase.')">ADD TO BAG · DEMO</button><div class="notice">Prototype note: final SKU, price, dimensions, compliance and shipping details need to be confirmed before launch.</div></div></div><div class="section soft"><h2>More island friends</h2><div class="cards" id="relatedProducts"></div></div></section>
+<section id="ip" class="page"><div class="page-hero" style="background:linear-gradient(120deg,#e9b84b,#e77c9b)"><div class="eyebrow">ORIGINAL CHARACTER UNIVERSE</div><h1>SQUISHY ISLAND</h1><p>Somewhere in the South Pacific, a beautiful little island is home to a community of soft, squishy friends. Every islander has a story, a look and a personality all their own.</p></div><div class="section"><div class="split"><div><div class="kicker">A CAST WITH CHARACTER</div><h2>37 islanders — and counting</h2><p class="muted">From curious creatures to cheeky little companions, the Squishy Island cast keeps growing. Discover their names, personalities and the tiny details that make each one special.</p><span class="tag">ORIGINAL IP</span> <span class="tag">COLLECT THEM ALL</span></div><img class="feature-img" id="castImg"></div></div><div class="section soft"><div class="section-head"><div><div class="kicker">MEET THE RESIDENTS</div><h2>Who's your island bestie?</h2></div></div><div class="char-grid" id="charGrid"></div></div><div class="section"><div class="banner"><div><h2>Take the island home</h2><p class="muted">Discover collectible squishies and character-inspired gifts.</p></div><a class="cta" onclick="go('shop')">SHOP THE ISLAND</a></div></div></section>
+<section id="about" class="page"><div class="page-hero"><div class="eyebrow">OUR BRAND STORY</div><h1>JOY IN EVERY SQUEEZE.</h1><p>Born in Indonesia and rooted in Southeast Asia, FUYOO is an original comfort-toy brand built around playful characters, soft-touch experiences and little moments of happiness.</p></div><div class="section"><div class="split"><img class="feature-img" id="aboutImg"><div><div class="kicker">WHAT WE BELIEVE</div><h2>Small moments. Softer days.</h2><p class="muted">We bring a relaxed, tropical spirit into character design, creating soft and lovable companions that invite you to pause, play and release a little everyday stress. We care about product quality and continue to expand our original IP universe into new expressions of joy.</p></div></div></div><div class="section mint"><div class="cards"><div><h2>01</h2><b>Original IP</b><p class="muted">A growing world of distinctive characters.</p></div><div><h2>02</h2><b>Soft touch</b><p class="muted">A satisfying, squeezable sensory experience.</p></div><div><h2>03</h2><b>Playful design</b><p class="muted">Colourful characters with their own stories.</p></div><div><h2>04</h2><b>Quality minded</b><p class="muted">Product quality and safety remain priorities.</p></div></div></div></section>
+<section id="news" class="page"><div class="page-hero" style="background:linear-gradient(120deg,#7bc9c0,#4a9d98)"><div class="eyebrow">WHAT'S HAPPENING ON THE ISLAND</div><h1>NEWS & STORIES</h1><p>Discover new collections, character introductions, events and moments from the FUYOO world.</p></div><div class="section"><div class="filters"><button class="filter active">All</button><button class="filter">New Releases</button><button class="filter">Events</button><button class="filter">Character Stories</button><button class="filter">Brand Updates</button></div><div class="story-list" id="newsList"></div></div></section>
+<section id="retail" class="page"><div class="page-hero" style="background:linear-gradient(120deg,#8e3c91,#d18ac4)"><div class="eyebrow">BRING FUYOO TO YOUR STORE</div><h1>LET'S PLAY IRL.</h1><p>From eye-catching countertop displays to themed island shop concepts, FUYOO helps bring character and colour into the retail experience.</p></div><div class="section"><div class="split"><img class="feature-img" id="retailImg"><div><div class="kicker">RETAIL & DISTRIBUTION</div><h2>Make room for a little joy.</h2><p class="muted">We welcome enquiries from retailers, distributors, pop-up partners and event organisers interested in carrying FUYOO products or creating branded retail experiences.</p><a class="cta" onclick="go('contact')">BECOME A PARTNER</a></div></div></div><div class="section soft"><h2>Retail display concepts</h2><div class="cards" id="retailCards"></div></div></section>
+<section id="contact" class="page"><div class="page-hero"><div class="eyebrow">SAY HELLO</div><h1>LET'S CONNECT.</h1><p>Have a product question, partnership idea or retail enquiry? We'd love to hear from you.</p></div><div class="section"><div class="split"><div><div class="kicker">CONTACT FUYOO</div><h2>Good things start with a hello.</h2><p class="muted">For customer support, distribution, wholesale, licensing or collaboration enquiries, send us a message.</p><p class="muted">Email: hello@fuyoo-squishy.com <br>(Placeholder — replace with official contact details)</p></div><form class="form" onsubmit="event.preventDefault();alert('Demo form only — connect your CRM or email service before publishing.');"><input required placeholder="Your name"><input type="email" required placeholder="Email address"><select><option>Enquiry type</option><option>Product question</option><option>Wholesale / Distribution</option><option>Retail partnership</option><option>Media / Collaboration</option></select><textarea required placeholder="Tell us how we can help"></textarea><button class="cta">SEND MESSAGE →</button></form></div></div>
+<div class="section soft"><div class="kicker">JOIN THE ISLAND · CAREERS</div><h2>Grow with Fuyoo</h2><p class="muted">招聘信息预留位置（Placeholder）— 将在此展示雅加达运营团队与广州设计中心的在招岗位、职责与申请方式。此区块待重新设计。</p><div class="banner" style="margin-top:18px"><div><b style="font-size:18px">WE'RE HIRING · 加入我们</b><p class="muted">［ 招聘信息展示位 · TO BE DESIGNED ］</p></div><span class="cta light">VIEW OPENINGS</span></div></div>
+</section>
+<footer class="footer"><div><div class="brand">FUYOO</div><p>Fuyoo, can't stop squeezing.<br>Soft friends. Happy moments.</p><p style="color:#e7b6e2">fuyoo-squishy.com</p></div><div><h4>EXPLORE</h4><a onclick="go('shop')">Shop all</a><a onclick="go('ip')">Squishy Island</a><a onclick="go('about')">Our story</a><a onclick="go('news')">News</a></div><div><h4>HELP</h4><a onclick="go('contact')">Contact</a><a>FAQ</a><a>Shipping & Returns</a><a>Product care</a></div><div><h4>BUSINESS</h4><a onclick="go('retail')">Retail partners</a><a onclick="go('contact')">Wholesale enquiries</a><a>Privacy policy</a><a>Terms</a></div></footer>
+</div></main></div>
+<script>
+const IMAGES={"7":"assets/fuyoo-images/7.jpg","8":"assets/fuyoo-images/8.jpg","9":"assets/fuyoo-images/9.jpg","10":"assets/fuyoo-images/10.jpg","12":"assets/fuyoo-images/12.jpg","13":"assets/fuyoo-images/13.jpg","14":"assets/fuyoo-images/14.jpg","23":"assets/fuyoo-images/23.jpg","24":"assets/fuyoo-images/24.jpg","25":"assets/fuyoo-images/25.jpg","16":"assets/fuyoo-images/16.jpg","17":"assets/fuyoo-images/17.jpg","18":"assets/fuyoo-images/18.jpg","19":"assets/fuyoo-images/19.jpg","20":"assets/fuyoo-images/20.jpg","21":"assets/fuyoo-images/21.jpg","22":"assets/fuyoo-images/22.jpg","25":"assets/fuyoo-images/25.jpg"};
+const products=[
+{name:'Island Buddy Keychain',type:'keychain',desc:'A pocket-sized island friend',img:13,tag:'KEYCHAIN SERIES'},
+{name:'Squishy Island Main Character',type:'main',desc:'Meet a new collectible friend',img:14,tag:'MAIN SERIES'},
+{name:'Value Series Surprise',type:'value',desc:'A little surprise, a lot of joy',img:15,tag:'VALUE SERIES'},
+{name:'Soft Touch Character',type:'main',desc:'Cute, soft and ready to squeeze',img:12,tag:'COLLECTIBLE'},
+{name:'Island Gift Set',type:'gift',desc:'A thoughtful gift for squishy fans',img:13,tag:'GIFT IDEA'},
+{name:'Character Collection',type:'main',desc:'Collect the island residents',img:14,tag:'CHARACTER SERIES'},
+{name:'Pocket Pal',type:'keychain',desc:'Bring your favourite friend along',img:15,tag:'KEYCHAIN SERIES'},
+{name:'Squishy Surprise Pack',type:'value',desc:'Discover who is inside',img:12,tag:'SURPRISE'}
+];
+const stories=[
+{title:'Meet the Squishy Island universe',cat:'Character Stories',date:'BRAND STORY',img:7,desc:'A little island, a big cast of lovable personalities.'},
+{title:'A closer look at the FUYOO collection',cat:'New Releases',date:'COLLECTION',img:12,desc:'Discover soft-touch characters and collectible formats.'},
+{title:'Bring the island to your store',cat:'Events',date:'RETAIL',img:23,desc:'Explore colourful displays and retail concepts.'}
+];
+function img(n){return IMAGES[n]||IMAGES[12]}
+function productCard(p){return `<article class="product" onclick="openProduct('${p.name}',${p.img})"><div class="product-img"><img src="${img(p.img)}"></div><div class="product-info"><span class="tag">${p.tag}</span><p><b>${p.name}</b></p><small>${p.desc}</small></div></article>`}
+function storyCard(s){return `<article class="story"><img src="${img(s.img)}"><div><small>${s.date} · ${s.cat}</small><b>${s.title}</b><p class="muted">${s.desc}</p><span class="text-link">READ STORY →</span></div></article>`}
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+function openProduct(name,n){document.getElementById('detailName').textContent=name;document.getElementById('detailImg').src=img(n);go('product')}
+let qty=1;function changeQty(n){qty=Math.max(1,qty+n);document.getElementById('qty').textContent=qty}
+document.getElementById('heroArt').style.backgroundImage=`url(${img(7)})`;
+document.getElementById('islandImg').src=img(7);document.getElementById('castImg').src=img(10);document.getElementById('aboutImg').src=img(12);document.getElementById('retailImg').src=img(23);
+document.getElementById('homeProducts').innerHTML=products.slice(0,4).map(productCard).join('');
+document.getElementById('shopProducts').innerHTML=products.map(productCard).join('');
+document.getElementById('relatedProducts').innerHTML=products.slice(1,5).map(productCard).join('');
+document.getElementById('homeNews').innerHTML=stories.map(storyCard).join('');
+document.getElementById('newsList').innerHTML=stories.concat(stories).map(storyCard).join('');
+document.getElementById('charGrid').innerHTML=[['MANO & LUNA',8],['MOXIE & WAVIE',8],['RASCAL & TUBBY',8],['BREE & LOAFY',9],['HALLEY & DOTTIE',9],['PIP & FILI',9]].map(x=>`<article class="char"><img src="${img(x[1])}"><div>${x[0]} <small style="color:#947596"> · SQUISHY ISLAND RESIDENT</small></div></article>`).join('');
+document.getElementById('retailCards').innerHTML=[['Counter display',17],['Themed shop concept',23],['Pop-up experience',24],['Exhibition booth',25]].map(x=>`<article class="product"><div class="product-img"><img src="${img(x[1])}"></div><div class="product-info"><b>${x[0]}</b><small>Retail visual concept</small></div></article>`).join('');
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');let f=b.dataset.filter;document.getElementById('shopProducts').innerHTML=products.filter(p=>f==='all'||p.type===f).map(productCard).join('')});
+document.querySelectorAll('.filters:not(:first-child) .filter').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+</script></body></html>
